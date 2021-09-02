@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
@@ -14,4 +13,17 @@ payload / 2]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
 	</sub-flow>
+
+	<sub-flow name="multiply-by-2-subflow" doc:id="c9547577-9d59-4ef5-8033-0d00c529b155" >
+		<ee:transform doc:name="Transform Message" doc:id="bec0c146-a9b4-4b42-9511-d9a93c1a87fd" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/java
+---
+payload * 2]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</sub-flow>
 </mule>
+
+
