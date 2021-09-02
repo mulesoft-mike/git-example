@@ -8,6 +8,7 @@
 		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
 		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
 	<munit:config name="git-example-test-suite.xml" />
+
 	<munit:test name="git-example-test-suite-divide-by-2-sub-flowTest" doc:id="d05d906c-c71e-4d17-84dc-730a5c3b8510" description="Test">
 		<munit:execution >
 			<set-payload value="#[2]" doc:name="Set Payload" doc:id="18598a1c-44af-4834-b7f1-591ea7d1306d" />
@@ -15,6 +16,16 @@
 		</munit:execution>
 		<munit:validation >
 			<munit-tools:assert-equals doc:name="Assert equals" doc:id="4588cfd1-c6a0-4c40-8b3d-be64ca449311" actual="#[payload]" expected="#[1]" message="#['The payload is not as expected']"/>
+		</munit:validation>
+	</munit:test>
+	
+	<munit:test name="git-example-test-suite-multiply-by-2-subflowTest" doc:id="9169132b-1060-4318-a116-e0b117ec8230" description="Test">
+		<munit:execution >
+			<set-payload value="#[1]" doc:name="Set Payload" doc:id="f56a3793-f8b7-4ddc-9a75-253af933ab39" />
+			<flow-ref doc:name="Flow-ref to multiply-by-2-subflow" doc:id="3e92a8c0-0bf5-4f03-b5de-1bb69afe17e5" name="multiply-by-2-subflow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="8cb8a376-c9ca-40a7-a851-397b4a4941d8" actual="#[payload]" expected="#[2]" message="#['The multiplied payload is not as expected']"/>
 		</munit:validation>
 	</munit:test>
 
