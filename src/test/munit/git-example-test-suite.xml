@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="git-example-test-suite.xml" />
+	<munit:test name="git-example-test-suite-divide-by-2-sub-flowTest" doc:id="d05d906c-c71e-4d17-84dc-730a5c3b8510" description="Test">
+		<munit:execution >
+			<set-payload value="#[2]" doc:name="Set Payload" doc:id="18598a1c-44af-4834-b7f1-591ea7d1306d" />
+			<flow-ref doc:name="Flow-ref to divide-by-2-sub-flow" doc:id="1061a81a-1990-4f7d-bbd7-7082b2b1399e" name="divide-by-2-sub-flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="4588cfd1-c6a0-4c40-8b3d-be64ca449311" actual="#[payload]" expected="#[1]" message="#['The payload is not as expected']"/>
+		</munit:validation>
+	</munit:test>
+
+</mule>
